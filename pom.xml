@@ -44,7 +44,16 @@
     </dependencies>
 
     <build>
-        <outputDirectory>${project.build.directory}/lib/</outputDirectory>
+        <resources>
+            <resource>
+                <directory>
+                    ${project.build.directory}/lib
+                </directory>
+                <targetPath>
+                    lib/
+                </targetPath>
+            </resource>
+        </resources>
         <plugins>
             <!-- Usual compilation -->
             <plugin>
@@ -101,11 +110,11 @@
                     <outputDirectory>
                         ${project.build.directory}/lib/
                     </outputDirectory>
+                    <includeScope>compile</includeScope>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
